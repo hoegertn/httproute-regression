@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
-import { HttprouteRegressionStack } from '../lib/httproute-regression-stack';
+import { ApiStack, RouteStack } from '../lib/httproute-regression-stack';
 
 const app = new cdk.App();
-new HttprouteRegressionStack(app, 'HttprouteRegressionStack');
+const api = new ApiStack(app, 'ApiStack');
+new RouteStack(app, 'RouteStack', {api});
